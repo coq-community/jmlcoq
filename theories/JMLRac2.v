@@ -833,9 +833,7 @@ induction a.
   clear IHa.
   destruct a as (pivots, assignables).
   simpl.
-  generalize SavePreState_1.
-  intro.
-  specialize H with p h pivot pivots assignables.
+  pose proof (SavePreState_1 p h pivot pivots assignables) as H.
   simpl in H.
   generalize UnfoldDatagroups_rac_2.
   intro.
@@ -924,9 +922,7 @@ apply EquivAssignables_step
   with a s (SavePreState p st@h loc a) (map (SavePreState p st@h loc) s);
   trivial.
 rewrite map_length;trivial.
-generalize SavePreState_1.
-intros.
-specialize H with p st@h loc (fst a) (snd a).
+pose proof (SavePreState_1 p st@h loc (fst a) (snd a)) as H.
 simpl in H.
 replace ((fst a), (snd a)) with a in H by (destruct a;trivial).
 generalize UnfoldDatagroups_rac_2.
@@ -1037,7 +1033,7 @@ Proof.
 intros.
  unfold EquivAssignables in *.
  unfold level in *.
- case_eq (nat_compare (length st @fr @assignables) (length st' @fr @assignables)); intros;
+ case_eq (Nat.compare (length st @fr @assignables) (length st' @fr @assignables)); intros;
   rewrite H0 in H.
   apply nat_compare_eq_sym in H0.
   rewrite H0 in |- *.
@@ -1063,14 +1059,14 @@ induction H0.
  subst.
  apply EquivAssignables_base.
   unfold truncate in |- *.
-  destruct nat_compare; trivial.
+  destruct Nat.compare; trivial.
   
   unfold truncate in |- *.
-  destruct nat_compare; trivial.
+  destruct Nat.compare; trivial.
   
  apply IHEquivAssignables_ind in H2.
  subst.
- case_eq (nat_compare n (length (head::tail))).
+ case_eq (Nat.compare n (length (head::tail))).
   intros.
   unfold truncate.
   rewrite H0.
@@ -1228,7 +1224,7 @@ elim min_dec with (length x) (length x''); intro.
  rewrite <- a0 in |- *.
  rewrite <- H2 in H.
  unfold level in H0.
- case_eq (nat_compare (length x') (length x'')); intros; rewrite H3 in H0.
+ case_eq (Nat.compare (length x') (length x'')); intros; rewrite H3 in H0.
   apply EquivAssignables_ind_truncated with (n := length x) in H0.
    apply
     EquivAssignables_ind_trans
@@ -1289,7 +1285,7 @@ elim min_dec with (length x) (length x''); intro.
  rewrite <- b0 in |- *.
  rewrite <- H2 in H0.
  unfold level in H.
- case_eq (nat_compare (length x) (length x')); intros; rewrite H3 in H.
+ case_eq (Nat.compare (length x) (length x')); intros; rewrite H3 in H.
   apply EquivAssignables_ind_truncated with (n := length x'') in H.
    apply
     EquivAssignables_ind_trans
@@ -1452,16 +1448,17 @@ unfold Rac1.Assignables.FieldUpdateCheck.
 intuition.
  destruct H6.
  destruct H with (n).
-  rewrite e1.
+  rewrite e.
   trivial.
   
   left.
   destruct H1 as (m0, H1).
   destruct H1.
- 
    exists m0.
    split.
-   rewrite <- e.
+
+   inversion H5.
+   rewrite <- H3.
    trivial.
    rewrite ObjSet2LocSet_def in H2 |- * .
    unfold LocInObjSet in H2 |- *.
@@ -1470,21 +1467,23 @@ intuition.
    unfold ObjSet.Equal in e0.
    apply ObjSet.mem_1.
    apply ObjSet.mem_2 in H2.
-   rewrite <- e0.
+   inversion H5.
+   apply H4 in H2.
    trivial.
    unfold ObjSet.Equal in e0.
    apply ObjSet.mem_1.
    apply ObjSet.mem_2 in H2.
-   rewrite <- e0.
+   inversion H5.
+   apply H4 in H2.
    trivial.
 
   right.
-  specialize e2 with n.
-  unfold LocSet.Equal in e2.
-  specialize e2 with loc.
-  rewrite UnfoldDatagroups_def in e2.
-  rewrite UnfoldDatagroups_rac_def in e2.
-  destruct e2.
+  specialize e0 with n.
+  unfold LocSet.Equal in e0.
+  specialize e0 with loc.
+  rewrite UnfoldDatagroups_def in e0.
+  rewrite UnfoldDatagroups_rac_def in e0.
+  destruct e0.
   clear H3.
   destruct H2.
   destruct H1.
@@ -1501,7 +1500,7 @@ intuition.
 
  destruct H6.
  destruct H with (n).
-  rewrite <- e1.
+  rewrite <- e.
   trivial.
   
   left.
@@ -1510,7 +1509,8 @@ intuition.
  
    exists m0.
    split.
-   rewrite e.
+   inversion H5.
+   rewrite H3.
    trivial.
    rewrite ObjSet2LocSet_def in H2 |- * .
    unfold LocInObjSet in H2 |- *.
@@ -1519,21 +1519,23 @@ intuition.
    unfold ObjSet.Equal in e0.
    apply ObjSet.mem_1.
    apply ObjSet.mem_2 in H2.
-   rewrite e0.
+   inversion H5.
+   apply H4 in H2.
    trivial.
    unfold ObjSet.Equal in e0.
    apply ObjSet.mem_1.
    apply ObjSet.mem_2 in H2.
-   rewrite e0.
+   inversion H5.
+   apply H4 in H2.
    trivial.
 
   right.
-  specialize e2 with n.
-  unfold LocSet.Equal in e2.
-  specialize e2 with loc.
-  rewrite UnfoldDatagroups_def in e2.
-  rewrite UnfoldDatagroups_rac_def in e2.
-  destruct e2.
+  specialize e0 with n.
+  unfold LocSet.Equal in e0.
+  specialize e0 with loc.
+  rewrite UnfoldDatagroups_def in e0.
+  rewrite UnfoldDatagroups_rac_def in e0.
+  destruct e0.
   clear H2.
   destruct H3.
   destruct H1.
@@ -1790,7 +1792,7 @@ intros.
 simpl.
 unfold EquivAssignables in H3.
   unfold level in H3.
-  assert (nat_compare (length st_rac2@fr@assignables) (length st_rac2_c@fr@assignables )= Lt).
+  assert (Nat.compare (length st_rac2@fr@assignables) (length st_rac2_c@fr@assignables )= Lt).
 rewrite <- H4.
 simpl.
   apply nat_compare_n_Sn.
@@ -1877,7 +1879,7 @@ case_eq (isPivot p loc); intro.
   intro.
   intros.
   specialize H1 with p st_rac2 @h st_rac2 @fr@assignables loc v n.
-  apply H1 with (n := n) in H0.
+  apply H1 in H0.
   clear H1.
   destruct H9.
   specialize e0 with n.

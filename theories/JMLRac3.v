@@ -787,7 +787,7 @@ elim tree using
    (forall n f'',
     (nth n dgs (DGNode f'' nil)) = (nth n dgs0 (DGNode f'' nil))).
    intros.
-   case_eq (nat_compare n (length dgs)); intros.
+   case_eq (Nat.compare n (length dgs)); intros.
     assert (le (length dgs) n).
      rewrite nat_compare_Eq in H0.
      omega.
@@ -3781,4 +3781,3 @@ Qed.
 End Assignables.
 
 End Rac3.
-

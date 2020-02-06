@@ -36,6 +36,8 @@ Require Import Coq.Arith.Max.
 Section ListFunctions.
   Variable A : Type.
   Variable B : Type.
+  Variable P : A -> Prop.
+  Variable P_dec : forall a, {P a}+{~ P a}.
 
   (** Make a singleton list from the given element a. *)
   Definition singleton (a:A) : list A := a :: nil.
@@ -77,14 +79,29 @@ Section ListFunctions.
     | x::nil => x
     | x::xs  => op x (fold_right1 op xs e)
     end.
-    
+
+  Program Fixpoint Find (l : list A) {struct l} :
+    { a : A | In a l & P a }+{ AllS (fun a' => ~ P a') l } :=
+    match l with
+    | nil => inright _
+    | a0 :: l' =>
+      match P_dec a0 with
+      | left Hdec => inleft (exist2 _ _ a0 _ _)
+      | right Hdec =>
+        match Find l' with
+        | inleft (exist2 _ _ a1 _ _) => inleft (exist2 _ _ a1 _ _)
+        | inright Hdec => inright _
+        end
+      end
+    end.
+
 End ListFunctions.
 
-Implicit Arguments singleton [A].
-Implicit Arguments dropWhile [A].
-Implicit Arguments concat [A].
-Implicit Arguments fold_left1 [A].
-Implicit Arguments fold_right1 [A].
+Arguments singleton [A].
+Arguments dropWhile [A].
+Arguments concat [A].
+Arguments fold_left1 [A].
+Arguments fold_right1 [A].
 
 Inductive Expr : Set :=
     | Lit : nat -> Expr
@@ -163,4 +180,3 @@ Section Proofs.
   Qed.
 
 End Proofs.
-

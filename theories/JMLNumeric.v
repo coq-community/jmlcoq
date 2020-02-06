@@ -26,7 +26,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Require Export ZArith.
 (** Common interface for numerics domains *)
-Open Local Scope Z_scope.
+Open Scope Z_scope.
 
 Module Type NUMERIC.
   Parameter t : Set.
@@ -39,7 +39,7 @@ Module Type NUMERIC.
   Parameter num_dec : forall t1 t2:t , {t1 = t2} + {t1 <> t2}.
   Definition smod (x:Z) : Z :=
     let z := x mod base in 
-    match Zcompare z half_base  with
+    match Z.compare z half_base  with
     | Lt => z
     | _ => z - base
     end.

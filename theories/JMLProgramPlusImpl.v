@@ -39,7 +39,7 @@ Require Import EqBoolAux.
 Require Import Relation_Operators.
 
 Require Import List.
-Require Import TheoryList. (* Find, AllS, etc. *)
+Require Import ListFunctions.
 Require Import ListHelpers.
 Require Import OptionHelpers.
 (** 
@@ -396,8 +396,8 @@ Module Make <: PROGRAM.
   Inductive optional (A : Type) : Type :=
     | NotSpecified : optional A
     | Specified: A -> optional A.
-  Implicit Arguments Specified [A].
-  Implicit Arguments NotSpecified [A].
+  Arguments Specified [A].
+ Arguments NotSpecified {A}.
 
   (* REM: Needed? *)
   Inductive ArrayKind : Set :=
@@ -983,17 +983,16 @@ Module Make <: PROGRAM.
       statementAtS either returns a statement s together with a proof that
       its pc matches pc1 or a proof that no statement in the given block matches pc1.
      *)
-    Definition statementAtS: forall (b:BLOCK.t) (pc1:PC),
+    Definition statementAtS (b:BLOCK.t) (pc1:PC) :
       {s:STATEMENT.t | In s (statements b) & eq_PC_Stmt pc1 s}+{AllS (neq_PC_Stmt pc1) (statements b)}.
     Proof.
-      intros block pc1.
-      apply (Find (eq_PC_Stmt pc1) (neq_PC_Stmt pc1) (PC_Stmt_eq_dec pc1) (statements block)).
+      apply (Find _ _ (PC_Stmt_eq_dec pc1) (statements b)).
     Defined.
 
     (** statementAt is easily defined in terms of its strongly specified counterpart statementAtS *)
     Definition statementAt (block:t) (pc1:PC) : option STATEMENT.t :=
       match (statementAtS block pc1) with
-      | inleft (exist2 s P Q) => Some s
+      | inleft (exist2 _ _ s P Q) => Some s
       | inright _ => None
       end.
 
@@ -1027,7 +1026,7 @@ Module Make <: PROGRAM.
     (* elem is sort of isomorphic to statementAt *)
     Definition elem (block:t) (pc1:PC) : bool :=
       match (statementAtS block pc1) with
-      | inleft (exist2 s P Q) => true
+      | inleft (exist2 _ _ s P Q) => true
       | inright _ => false
       end.
 
@@ -1202,7 +1201,7 @@ Module Make <: PROGRAM.
     (** first is easily defined in terms of firstS *)
     Definition first (block:t) : option PC :=
       match (firstS block) with
-      | inleft (exist s0 _) => Some (STATEMENT.pc s0)
+      | inleft (exist _ s0 _) => Some (STATEMENT.pc s0)
       | inright _ => None
       end.
 
@@ -1264,7 +1263,7 @@ Module Make <: PROGRAM.
      *)
     Definition next (block:t) (pc0:PC) : option PC :=
       match suffixS (statements block) pc0 with
-      | inleft (existT l _) =>
+      | inleft (existT _ l _) =>
           match tail l with
           | n::_ => Some (STATEMENT.pc n)
           | nil => None
@@ -1302,7 +1301,7 @@ Module Make <: PROGRAM.
     (** last is easily defined in terms of lastS, its strong counterpart. *)
     Definition last (block:t) : option PC :=
       match lastS (statements block) with
-      | inleft (exist s0 _) => Some (STATEMENT.pc s0)
+      | inleft (exist _ s0 _) => Some (STATEMENT.pc s0)
       | inright _   => None
       end.
 
@@ -1808,9 +1807,9 @@ Module Make <: PROGRAM.
       | NotSpecifiedOS : optionalSame A
       | SpecifiedOS    : A -> optionalSame A
       | same : optionalSame A.
-    Implicit Arguments NotSpecifiedOS [A].
-    Implicit Arguments SpecifiedOS [A].
-    Implicit Arguments same [A].
+    Arguments NotSpecifiedOS {A}.
+    Arguments SpecifiedOS {A}.
+    Arguments same {A}.
 
     (**
       Full syntax type for spec header

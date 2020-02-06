@@ -127,8 +127,8 @@ Module Type PROGRAM.
   Inductive optional (A : Type) : Type :=
     | NotSpecified
     | Specified (a : A).
-  Implicit Arguments Specified [A].
-  Implicit Arguments NotSpecified [A].
+  Arguments Specified [A].
+  Arguments NotSpecified {A}.
 
   (** Universe Type modifiers *)
   Inductive utsModifier : Set :=

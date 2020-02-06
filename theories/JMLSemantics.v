@@ -599,8 +599,8 @@ signatures of the functions that we need to know already. That way, we don't hav
     match q with
     | Sum     => Int.add
     | Product => Int.mul
-    | Min     => fun a b => Int.const (Zmin (Int.toZ a) (Int.toZ b))
-    | Max     => fun a b => Int.const (Zmin (Int.toZ a) (Int.toZ b))
+    | Min     => fun a b => Int.const (Z.min (Int.toZ a) (Int.toZ b))
+    | Max     => fun a b => Int.const (Z.min (Int.toZ a) (Int.toZ b))
     | _       => fun a b => Int.const 0
     end.
 

@@ -78,9 +78,9 @@ Section OptionHelpers.
     end.
 
 End OptionHelpers.
-Implicit Arguments option2list [A].
-Implicit Arguments optionMap [A B].
-Implicit Arguments optionList2list [A].
+Arguments option2list [A].
+Arguments optionMap [A B].
+Arguments optionList2list [A].
 
 
 Section Proofs.

@@ -81,7 +81,7 @@ Definition replace_top (a : A) (s : stack A) : stack A :=
   end.
 
 Fixpoint truncate (n : nat) (s : stack A) : stack A :=
-    match nat_compare n (length s) with
+    match Nat.compare n (length s) with
     | Lt =>
       match s with
       | _ :: t => truncate n t
@@ -91,7 +91,7 @@ Fixpoint truncate (n : nat) (s : stack A) : stack A :=
     end.
 
 Definition level (s t : stack A) : stack A * stack A :=
-  match nat_compare (length s) (length t) with
+  match Nat.compare (length s) (length t) with
   | Lt => (s , truncate (length s) t)
   | Eq => (s, t)
   | Gt => (truncate (length t) s, t)
@@ -110,7 +110,7 @@ mplicit Arguments.
 
   Variable A B : Type.
   Lemma nat_compare_n_Sn : forall n,
-    nat_compare n (S n) = Lt.
+    Nat.compare n (S n) = Lt.
     Proof.
     intuition.
     rewrite <- nat_compare_lt.
@@ -118,7 +118,7 @@ mplicit Arguments.
 Qed.
 
   Lemma nat_compare_Sn_n : forall n,
-    nat_compare (S n) n = Gt.
+    Nat.compare (S n) n = Gt.
     Proof.
     intuition.
     rewrite <- nat_compare_gt.
@@ -127,13 +127,13 @@ Qed.
 
 Lemma nat_compare_Eq:
 forall n m,
-nat_compare n m = Eq <-> n = m.
+Nat.compare n m = Eq <-> n = m.
 Proof.
 induction n.
  split; intros.
   apply nat_compare_eq; trivial.
   
-  unfold nat_compare.
+  unfold Nat.compare.
   destruct m; trivial.
   discriminate H.
   
@@ -149,14 +149,14 @@ induction n.
    inversion H.
    generalize H1; intro.
    apply IHn in H1.
-   unfold nat_compare.
+   unfold Nat.compare.
    subst.
    destruct m; trivial.
 Qed.
 
 Lemma nat_compare_n_n:
 forall n,
-nat_compare n n = Eq.
+Nat.compare n n = Eq.
 Proof.
 intros.
 rewrite nat_compare_Eq.
@@ -167,7 +167,7 @@ Lemma lt_gt: forall n m, n < m <-> m > n. Proof. split; trivial. Qed.
 Lemma le_ge: forall n m , n <= m <-> m>=n. Proof. split;trivial. Qed.
 
 Lemma nat_compare_lt_gt_sym: 
-forall n m, nat_compare n m = Lt <-> nat_compare m n = Gt.
+forall n m, Nat.compare n m = Lt <-> Nat.compare m n = Gt.
 Proof.
 intros;split;intros.
 apply nat_compare_lt in H.
@@ -179,7 +179,7 @@ rewrite <- nat_compare_lt;trivial.
 Qed.
 
 Lemma nat_compare_eq_sym: 
-forall n m, nat_compare n m = Eq <-> nat_compare m n = Eq.
+forall n m, Nat.compare n m = Eq <-> Nat.compare m n = Eq.
 Proof.
 intros;split;intros;rewrite nat_compare_Eq;rewrite nat_compare_Eq in H;symmetry;trivial.
 Qed.
@@ -193,10 +193,10 @@ intros.
 unfold truncate in |- *.
 induction s.
  simpl in *.
- assert (n = 0) by complete auto with arith.
- destruct nat_compare; trivial.
+ assert (n = 0) by auto with arith.
+ destruct Nat.compare; trivial.
  
- case_eq (nat_compare n (length (a :: s))); intro.
+ case_eq (Nat.compare n (length (a :: s))); intro.
   apply nat_compare_Eq in H0; trivial.
   
   apply IHs.
@@ -218,9 +218,9 @@ Proof.
 intros.
 induction s.
 unfold truncate.
-unfold nat_compare;trivial.
+unfold Nat.compare; trivial.
 unfold truncate.
-replace (nat_compare 0 (length (a::s))) with Lt by trivial.
+replace (Nat.compare 0 (length (a::s))) with Lt by trivial.
 trivial.
 Qed.
 
@@ -233,10 +233,10 @@ induction s.
  unfold truncate in |- *.
  simpl in |- *.
  unfold map in |- *.
- destruct nat_compare; trivial.
+ destruct Nat.compare; trivial.
  
  unfold truncate in |- *.
- case_eq (nat_compare n (length (map f (a :: s)))); intro.
+ case_eq (Nat.compare n (length (map f (a :: s)))); intro.
   generalize H; intro.
   rewrite map_length in H0.
   unfold map at 2 in |- *.
@@ -271,7 +271,7 @@ Proof.
 intros.
 split; intro. 
  unfold level in H.
- case_eq (nat_compare (length s) (length t)); intro.
+ case_eq (Nat.compare (length s) (length t)); intro.
   apply nat_compare_Eq in H0; trivial.
   
   rewrite H0 in H.
@@ -288,7 +288,7 @@ split; intro.
   progress auto with *.
 
  unfold level in |- *.
- replace (nat_compare (length s) (length t)) with Eq ; trivial.
+ replace (Nat.compare (length s) (length t)) with Eq ; trivial.
  symmetry  in |- *; rewrite nat_compare_Eq in |- *; trivial.
 Qed.
 
@@ -300,7 +300,7 @@ length s <= length t.
 Proof.
 split;intros.
 unfold level in H.
-case_eq (nat_compare (length s) (length t));intros.
+case_eq (Nat.compare (length s) (length t));intros.
 apply nat_compare_Eq in H0.
 rewrite H0.
 trivial.
@@ -309,7 +309,7 @@ auto with *.
 assert (truncate (length s) t = t).
 unfold truncate.
 destruct t.
-destruct nat_compare;trivial.
+destruct Nat.compare;trivial.
 rewrite H0.
 trivial.
 rewrite H1 in H.
@@ -326,10 +326,10 @@ apply H2 in H4.
 rewrite <- H4.
 trivial.
 unfold level.
-case_eq(nat_compare (length s) (length t));intros.
+case_eq(Nat.compare (length s) (length t));intros.
 unfold truncate.
 destruct t.
-destruct nat_compare;trivial.
+destruct Nat.compare;trivial.
 rewrite H0;trivial.
 trivial.
 apply nat_compare_le in H.
@@ -344,7 +344,7 @@ length t <= length s.
 Proof.
 split;intros.
 unfold level in H.
-case_eq (nat_compare (length t) (length s));intros.
+case_eq (Nat.compare (length t) (length s));intros.
 apply nat_compare_Eq in H0.
 rewrite H0.
 trivial.
@@ -354,7 +354,7 @@ assert (truncate (length t) s = s).
 unfold truncate.
 destruct s.
 simpl.
-destruct (nat_compare (length t) 0);trivial.
+destruct (Nat.compare (length t) 0);trivial.
 rewrite H0.
 trivial.
 rewrite H1 in H.
@@ -372,11 +372,11 @@ apply H2 in H4.
 rewrite <- H4.
 trivial.
 unfold level.
-case_eq(nat_compare (length s) (length t));intros.
+case_eq(Nat.compare (length s) (length t));intros.
 unfold truncate.
 destruct s.
 simpl.
-destruct (nat_compare (length t) 0);trivial.
+destruct (Nat.compare (length t) 0);trivial.
 apply nat_compare_eq_sym in H0.
 rewrite H0;trivial.
 apply nat_compare_ge in H.
@@ -391,7 +391,7 @@ length s' = length t'.
 Proof.
 intros.
 unfold level in H.
-case_eq (nat_compare (length s) (length t));intros;rewrite H0 in H.
+case_eq (Nat.compare (length s) (length t));intros;rewrite H0 in H.
 apply nat_compare_Eq in H0.
 inversion H.
 trivial.
@@ -414,7 +414,7 @@ Proof.
 intros.
 unfold truncate in |- *.
 destruct s.
- destruct nat_compare; trivial.
+ destruct Nat.compare; trivial.
  
  rewrite H in |- *.
  rewrite nat_compare_n_Sn in |- *.
@@ -425,10 +425,10 @@ destruct s.
   trivial.
   
   destruct s.
-   destruct nat_compare; trivial.
+   destruct Nat.compare; trivial.
    
    rewrite H0 in |- *.
-   replace (nat_compare n n) with Eq .
+   replace (Nat.compare n n) with Eq .
    trivial.
    symmetry.
    rewrite nat_compare_Eq.
@@ -443,7 +443,7 @@ Proof.
 intros.
 unfold truncate.
 destruct s.
-destruct nat_compare;trivial.
+destruct Nat.compare;trivial.
 rewrite nat_compare_n_n.
 trivial.
 Qed.
@@ -453,7 +453,7 @@ forall n,
 truncate n nil = nil (A := A).
 Proof.
 intros. unfold truncate.
-destruct nat_compare;trivial.
+destruct Nat.compare;trivial.
 Qed.
 
 Lemma truncate_truncate:
@@ -469,8 +469,8 @@ generalize H.
 intros.
 apply  IHs in H0.
 unfold truncate.
-case_eq (nat_compare m (length (a::s))).
-case_eq (nat_compare n (length (a::s))).
+case_eq (Nat.compare m (length (a::s))).
+case_eq (Nat.compare n (length (a::s))).
 trivial.
 trivial.
 trivial.
@@ -478,7 +478,7 @@ unfold truncate in H0.
 rewrite <- H0.
 clear H0.
 intros.
-case_eq (nat_compare n (length (a::s))).
+case_eq (Nat.compare n (length (a::s))).
 intuition.
 apply nat_compare_lt in H0.
 apply nat_compare_Eq in H1.
@@ -498,21 +498,3 @@ trivial.
 Qed.
 
 End proofs.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

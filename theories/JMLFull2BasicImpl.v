@@ -57,7 +57,7 @@ Import EXPRESSION_NOTATIONS_P.
       | NotSpecified => NotSpecifiedOS
       | Specified x  => SpecifiedOS x
       end.
-    Implicit Arguments optional2optionalSame [A].
+    Arguments optional2optionalSame [A].
 
     (** Implicit conversion from optional to optionalSame *)
     Coercion optional2optionalSame : optional >-> optionalSame.
@@ -69,7 +69,7 @@ Import EXPRESSION_NOTATIONS_P.
       | NotSpecified, b => b
       | a, NotSpecified => a
       end.
-    Implicit Arguments liftOptional2 [A].
+    Arguments liftOptional2 [A].
 
     (** Lift a basic unary operation into the "optional world" *)
     Definition liftOptional1 (A B:Type) (op:A->B) (oa:optional A) : optional B :=
@@ -77,7 +77,7 @@ Import EXPRESSION_NOTATIONS_P.
       | Specified a  => Specified (op a)
       | NotSpecified => NotSpecified
       end.
-    Implicit Arguments liftOptional1 [A B].
+    Arguments liftOptional1 [A B].
 
     (**
       addHeaders sc reqs
@@ -806,7 +806,11 @@ Import EXPRESSION_NOTATIONS_P.
       map desugar1 specs).
     Proof.
       rewrite P0 in data.
-      exact data.
+      case data; intros.
+      exists x.
+      rewrite <- P.
+      rewrite P0.
+      trivial.
     Defined.
 
     (** Merge a list of forall variable declarations into a single forall variable declaration. *)
@@ -1361,7 +1365,7 @@ Import EXPRESSION_NOTATIONS_P.
         Filter all loop annotations in /annos/ with the given loop annotation tag /t/.
        *)
       Definition filterTag (t:tag) (l:list data) : list Expression := 
-        let f := fun x => match x with exist (_,d) _ => d end in
+        let f := fun x => match x with exist _ (_,d) _ => d end in
         map f (filterTag tag tag_eq_dec data tagOf t l).
     End LOOP_ANNOTATION_TAG.
 
@@ -1710,4 +1714,3 @@ Import EXPRESSION_NOTATIONS_P.
 
   End DECLARATION_REWRITINGS.
   Export DECLARATION_REWRITINGS.
-

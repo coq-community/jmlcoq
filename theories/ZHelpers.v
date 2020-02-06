@@ -56,7 +56,7 @@ Section Pair_eq_dec.
     decide equality.
   Defined.
 End Pair_eq_dec.
-Implicit Arguments Pair_eq_dec [A B].
+Arguments Pair_eq_dec [A B].
 
 Definition positive_eq_dec : forall x y:positive, {x=y}+{x<>y}.
 Proof.

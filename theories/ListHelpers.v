@@ -25,7 +25,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 *)
 
 Require Import List.
-Require Import TheoryList.
 
 (**
   Usefull TheoryList extensions:
@@ -83,6 +82,7 @@ Section In.
   Proof.
     intros.
     case H; intuition.
+    inversion H0.
   Qed.
 
 Lemma in_nth:
@@ -201,8 +201,8 @@ Section Last.
   Defined.
     
 End Last.
-Implicit Arguments Last [A].
-Implicit Arguments lastS [A].
+Arguments Last [A].
+Arguments lastS [A].
 
 Section Suffix.
   Variable A : Type.
@@ -310,4 +310,4 @@ Section Suffix.
     Qed.
 
 End Suffix.
-Implicit Arguments Suffix [A].
+Arguments Suffix [A].

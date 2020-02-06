@@ -58,18 +58,16 @@ Qed.
 
 Lemma Zeq_spec : forall (x y:Z), if Zeq_bool x y then x = y else x<>y.
 Proof.
- unfold Zeq_bool;destruct x;destruct y;simpl;trivial;
-  try (intro H;discriminate H;fail).
- fold (Peq p p0);generalize (Peq_spec p p0);destruct (Peq p p0);
-  intros;subst;trivial.
- intro H1;injection H1;auto.
- generalize (refl_equal (Pcompare p p0 Eq));pattern (Pcompare p p0 Eq) at -1;
-  case (Pcompare p p0 Eq);intros;simpl.
- rewrite (Pcompare_Eq_eq _ _ H);trivial.
- intros Heq;injection Heq;intros;subst;rewrite Pcompare_refl in H;discriminate.
- intros Heq;injection Heq;intros;subst;rewrite Pcompare_refl in H;discriminate.
+ unfold Zeq_bool; intros.
+ case_eq (x ?= y)%Z.
+ - apply Z.compare_eq_iff.
+ - intro.
+   rewrite Z.compare_lt_iff in H.
+   auto with zarith.
+ - intro.
+   rewrite Z.compare_gt_iff in H.
+   auto with zarith.
 Qed.
-
 
 Definition nat_of_N (n : N) : nat := match n with
   | N0 => 0
@@ -102,13 +100,12 @@ Proof.
   destruct H as (m,Heq);rewrite Heq;simpl.
   assert (H:=pred_o_P_of_succ_nat_o_nat_of_P_eq_id p).
   rewrite <- H;rewrite Heq.
-  simpl.  rewrite Ppred_succ. trivial.
+  simpl.  rewrite Pos.pred_succ. trivial.
 Qed.
-
 
 Definition Npred x :=
  match x with
  | N0 => N0
  | Npos xH => N0
- | Npos p => Npos (Ppred p)
+ | Npos p => Npos (Pos.pred p)
  end.
