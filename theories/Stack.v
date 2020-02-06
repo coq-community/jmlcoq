@@ -105,8 +105,7 @@ Notation "[]" := (nil).
 
 Section proofs.
 
-  Set I
-mplicit Arguments.
+Set Implicit Arguments.
 
   Variable A B : Type.
   Lemma nat_compare_n_Sn : forall n,

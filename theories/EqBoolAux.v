@@ -25,6 +25,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 *)
 
 Require Export Sumbool.
+Require Import List.
 
 Definition bool_eq (b1 b2:bool) := 
   if b1 then b2 
@@ -35,7 +36,7 @@ Proof. destruct b1;destruct b2;simpl;trivial;intro;discriminate. Qed.
 
 Section EqBool_Dec.
 
- Variable A:Set.
+ Variable A:Type.
  Variable Aeq : A -> A -> bool.
  Variable Aeq_spec : forall x y, if Aeq x y then x = y else x <> y.
 
@@ -101,7 +102,7 @@ Section EqBool_Dec.
  End EqOption.
 
  Section EqList. 
-  Require Import List.  
+
   Fixpoint list_eq (x y:list A) {struct x} : bool :=
     match x, y with
     | a1::x, a2::y => if Aeq a1 a2 then list_eq x y else false
@@ -120,5 +121,3 @@ Section EqBool_Dec.
 
  End EqList.
 End EqBool_Dec.
-
-

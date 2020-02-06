@@ -1010,10 +1010,7 @@ Module Make <: PROGRAM.
     Proof.
       intros b0 pc1 s H. 
       unfold statementAt in H.
-      destruct (statementAtS b0 pc1) as [Ex x|Ex x]. 
-      Focus 2.
-      discriminate H.
-
+      destruct (statementAtS b0 pc1) as [Ex|].
       case_eq Ex.
       intros x P Q ex.
       rewrite ex in H.
@@ -1021,6 +1018,8 @@ Module Make <: PROGRAM.
       rewrite Q.
       rewrite H1.
       reflexivity.
+
+      discriminate H.
     Qed.
 
     (* elem is sort of isomorphic to statementAt *)
@@ -1042,11 +1041,7 @@ Module Make <: PROGRAM.
     Proof.
       intros b0 pc1 in_b0.
       unfold elem in in_b0.
-      case_eq (statementAtS b0 pc1).
-      Focus 2.
-      intros.
-      rewrite H in in_b0. 
-      discriminate in_b0.
+      case_eq (statementAtS b0 pc1).      
 
       intros sS H.
       destruct sS.
@@ -1056,6 +1051,10 @@ Module Make <: PROGRAM.
       rewrite H.
       reflexivity.
       auto.
+
+      intros.
+      rewrite H in in_b0. 
+      discriminate in_b0.
     Qed.
     
     (** 
@@ -1164,7 +1163,7 @@ Module Make <: PROGRAM.
     Proof.
       intros b0 pc1 s H1 H2.
       unfold statementAt.
-      destruct (statementAtS b0 pc1) as [Ex x|Ex x]. 
+      destruct (statementAtS b0 pc1) as [Ex|Ex].
       case Ex.
       intros x P Q.
       assert (x=s).
