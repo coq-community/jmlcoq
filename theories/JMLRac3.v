@@ -1871,51 +1871,54 @@ rename H0 into H7.
 unfold FieldUpdateCheck.
 unfold Rac2.Assignables.FieldUpdateCheck.
 intuition.
- destruct H with n.
-  rewrite e1.
+  destruct (H n).  
+  inversion H6.
+  rewrite H1.
   trivial.
-  
   left.
   destruct H1 as (m0, H1).
   destruct H1.
  
    exists m0.
    split.
-   rewrite <- e.
+   inversion H5.
+   rewrite <- H3.
    trivial.
    rewrite ObjSet2LocSet_def in H2 |- * .
    unfold LocInObjSet in H2 |- *.
-   destruct am.
-   inversion H2.
-   unfold ObjSet.Equal in e0.
+   destruct am; trivial.
+   inversion H5.
+   unfold ObjSet.Equal in H4.
    apply ObjSet.mem_1.
    apply ObjSet.mem_2 in H2.
-   rewrite <- e0.
+   apply H4.
    trivial.
-   unfold ObjSet.Equal in e0.
+   inversion H5.
+   unfold ObjSet.Equal in H4.
    apply ObjSet.mem_1.
    apply ObjSet.mem_2 in H2.
-   rewrite <- e0.
+   apply H4.
    trivial.
 
   right.
   unfold Assignable.
   apply LocSet_fold_orb.
-  
-  specialize a with n (LocSet.empty, LocSet.empty).
-  unfold LocSet.Equal in a.
-  destruct a.
   destruct H1.
+  destruct H1.
+  inversion H6.  
+  specialize H4 with n (LocSet.empty, LocSet.empty).
+  unfold LocSet.Equal in H4.
+  destruct H4.  
   exists x.
-  destruct H1.
-  split;trivial.
-  apply H3;trivial.
-    rewrite <- FieldInDg_rac3_Correct; trivial.  
-    rewrite <- FieldInDg_rac2_Correct with (ep1 := fst (nth n st_rac2 @fr%rac2 @assignables (LocSet.empty, LocSet.empty) )); trivial.
-    rewrite <- H7;trivial.
+  split; [apply H8; trivial|].
+  rewrite <- FieldInDg_rac3_Correct; trivial.
+  rewrite <- FieldInDg_rac2_Correct with (ep1 := fst (nth n st_rac2 @fr%rac2 @assignables (LocSet.empty, LocSet.empty) )); trivial.
+  rewrite <- H7;trivial.
     
  destruct H with n.
-  rewrite <- e1.
+
+  inversion H6.
+  rewrite <- H1.
   trivial.
   
   left.
@@ -1924,38 +1927,40 @@ intuition.
  
    exists m0.
    split.
-   rewrite e.
+   inversion H5.
+   rewrite H3.
    trivial.
    rewrite ObjSet2LocSet_def in H2 |- * .
    unfold LocInObjSet in H2 |- *.
-   destruct am.
-   inversion H2.
-   unfold ObjSet.Equal in e0.
+   destruct am; trivial.
+   inversion H5.
+   unfold ObjSet.Equal in H4.
    apply ObjSet.mem_1.
    apply ObjSet.mem_2 in H2.
-   rewrite e0.
+   rewrite H4.
    trivial.
-   unfold ObjSet.Equal in e0.
+   inversion H5.
+   unfold ObjSet.Equal in H4.
    apply ObjSet.mem_1.
    apply ObjSet.mem_2 in H2.
-   rewrite  e0.
+   rewrite H4.
    trivial.
 
   right.
   unfold Assignable in H1.
   apply LocSet_fold_orb in H1.
-  
-  specialize a with n (LocSet.empty, LocSet.empty).
-  unfold LocSet.Equal in a.
-  destruct a.
+
+  inversion H6.
+  specialize H3 with n (LocSet.empty, LocSet.empty).
+  unfold LocSet.Equal in H3.
+  destruct H3.
   destruct H1.
   exists x.
   destruct H1.
-  split;trivial.
-  apply H3;trivial.
-    rewrite  FieldInDg_rac2_Correct with (ep2 := fst (nth n st_rac3 @fr@assignables (LocSet.empty, LocSet.empty) )); trivial.
-    rewrite H7;trivial.    
-    rewrite  FieldInDg_rac3_Correct; trivial.  
+  split; [apply H4; trivial|].
+  rewrite  FieldInDg_rac2_Correct with (ep2 := fst (nth n st_rac3 @fr@assignables (LocSet.empty, LocSet.empty) )); trivial.
+  rewrite H7;trivial.    
+  rewrite  FieldInDg_rac3_Correct; trivial.
 Qed.
 
   Definition AssignablePivotTargets ( p : Program) (bl : Backlinks.t) (pivot : Location) (a : LocSet.t * LocSet.t) : LocSet.t :=
@@ -3552,7 +3557,7 @@ case_eq (isPivot p loc); intros; rewrite H6 in H5;rewrite H6 in H4.
    trivial.
    
    intros.
-   case_eq (nat_compare n (length st_rac3 @fr @assignables )).
+   case_eq (Nat.compare n (length st_rac3 @fr @assignables )).
     intros.
     rewrite nat_compare_Eq in H14.
     repeat rewrite nth_overflow.
