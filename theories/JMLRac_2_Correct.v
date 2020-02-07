@@ -432,18 +432,16 @@ intros.
 
   generalize UnfoldDatagroups_rac_intersect_new.
   intros.
-specialize H11 with p st_rac2@h (Heap.ObjectObject cn um) st_rac2@fr o h' O.
+specialize H11 with p st_rac2@h (Heap.ObjectObject cn um) st_rac2@fr o h' n.
 replace st@h with st_rac2@h in H0.
 apply H11 in H0.
 generalize H0.
 specialize e1 with n.
 generalize e1.
-(*apply LocSet.eq_trans.
+apply LocSet.eq_trans.
 rewrite <- H1.
 simpl.
-trivial.*)
-admit.
-admit.
+trivial.
 
   apply
    OpRac1.new_object_ok
@@ -512,7 +510,7 @@ admit.
  apply OpRac1.BlockStep_ok_last; trivial.
  destruct H2.
  rewrite H6 in |- *; trivial.
-Admitted.
+Qed.
 
 Theorem rac1_rac2_correct:
 forall p,
@@ -695,19 +693,17 @@ split;trivial.
 intros.
   generalize UnfoldDatagroups_rac_intersect_new.
   intros.
-specialize H11 with p st_rac0@h (Heap.ObjectObject cn um) st_rac0@fr o h' O.
+specialize H11 with p st_rac0@h (Heap.ObjectObject cn um) st_rac0@fr o h' n.
 replace st@h%rac1 with st_rac1@h%rac1 in H0.
 rewrite H12 in H0.
 apply H11 in H0.
 generalize H0.
 specialize e1 with n.
 generalize e1.
-(*apply LocSet.eq_trans.
+apply LocSet.eq_trans.
 rewrite <- H1.
 simpl.
-trivial.*)
-admit.
-admit.
+trivial.
 
   apply
    OpRac2.new_object_ok
@@ -776,4 +772,4 @@ admit.
  apply OpRac2.BlockStep_ok_last; trivial.
  destruct H2.
  rewrite <- H6 in |- *; trivial.
-Admitted.
+Qed.
