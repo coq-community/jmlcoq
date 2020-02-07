@@ -1,0 +1,6 @@
+(coq.theory
+ (name JMLCoq)
+ (public_name coq-jmlcoq.JMLCoq)
+ (flags :standard
+   -w -notation-overridden
+   -w -undeclared-scope))

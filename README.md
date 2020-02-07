@@ -8,7 +8,7 @@
 
 
 
-A formalization of the Java-based JML specification language,
+A Coq formalization of the Java-based JML specification language,
 along with a verified runtime assertion checker for JML.
 
 ## Meta
