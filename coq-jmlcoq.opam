@@ -7,9 +7,10 @@ dev-repo: "git+https://github.com/palmskog/jmlcoq.git"
 bug-reports: "https://github.com/palmskog/jmlcoq/issues"
 license: "MIT"
 
-synopsis: "Coq definition of JML and a verified runtime assertion checker"
+synopsis: "Coq definition of the JML specification language and a verified runtime assertion checker for JML"
 description: """
-A Coq formalization of the Java-based JML specification language,
+A Coq formalization of the syntax and semantics of the
+Java-targeted JML specification language,
 along with a verified runtime assertion checker for JML."""
 
 build: [make "-j%{jobs}%"]

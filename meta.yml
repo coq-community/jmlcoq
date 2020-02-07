@@ -6,16 +6,19 @@ community: false
 travis: true
 coqdoc: false
 
-synopsis: Coq definition of JML and a verified runtime assertion checker
+synopsis: >-
+  Coq definition of the JML specification language
+  and a verified runtime assertion checker for JML
 
 description: |-
-  A Coq formalization of the Java-based JML specification language,
+  A Coq formalization of the syntax and semantics of the
+  Java-targeted JML specification language,
   along with a verified runtime assertion checker for JML.
 
 publications:
 - pub_url: https://www.research-collection.ethz.ch/handle/20.500.11850/68882
   pub_title: A Formalization of JML in the Coq Proof System
-  pub_doi: https://doi.org/10.3929/ethz-a-006903145
+  pub_doi: 10.3929/ethz-a-006903145
 
 authors:
 - name: Hermann Lehner

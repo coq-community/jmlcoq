@@ -8,7 +8,8 @@
 
 
 
-A Coq formalization of the Java-based JML specification language,
+A Coq formalization of the syntax and semantics of the
+Java-targeted JML specification language,
 along with a verified runtime assertion checker for JML.
 
 ## Meta
@@ -22,7 +23,7 @@ along with a verified runtime assertion checker for JML.
 - Additional dependencies: none
 - Coq namespace: `JML`
 - Related publication(s):
-  - [A Formalization of JML in the Coq Proof System](https://www.research-collection.ethz.ch/handle/20.500.11850/68882) doi:[https://doi.org/10.3929/ethz-a-006903145](https://doi.org/https://doi.org/10.3929/ethz-a-006903145)
+  - [A Formalization of JML in the Coq Proof System](https://www.research-collection.ethz.ch/handle/20.500.11850/68882) doi:[10.3929/ethz-a-006903145](https://doi.org/10.3929/ethz-a-006903145)
 
 ## Building instructions
 
