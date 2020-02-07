@@ -1,0 +1,72 @@
+---
+fullname: JMLCoq
+shortname: jmlcoq
+organization: palmskog
+community: false
+travis: true
+coqdoc: false
+
+synopsis: Coq definition of JML and a verified runtime assertion checker
+
+description: |-
+  A formalization of the Java-based JML specification language,
+  along with a verified runtime assertion checker for JML.
+
+publications:
+- pub_url: https://www.research-collection.ethz.ch/handle/20.500.11850/68882
+  pub_title: A Formalization of JML in the Coq Proof System
+  pub_doi: https://doi.org/10.3929/ethz-a-006903145
+
+authors:
+- name: Hermann Lehner
+  initial: true
+- name: David Pichardie
+  initial: true
+- name: Andreas Kägi
+  initial: true
+
+opam-file-maintainer: palmskog@gmail.com
+
+opam-file-version: dev
+
+license:
+  fullname: MIT License
+  identifier: MIT
+
+supported_coq_versions:
+  text: 8.9 or later
+  opam: '{(>= "8.9" & < "8.12~") | (= "dev")}'
+
+tested_coq_nix_versions:
+- version_or_url: https://github.com/coq/coq-on-cachix/tarball/master
+- version_or_url: '8.11'
+- version_or_url: '8.10'
+- version_or_url: '8.9'
+
+tested_coq_opam_versions:
+- version: dev
+
+namespace: JML
+
+keywords:
+- name: Java Modeling Language
+- name: runtime verification
+
+categories:
+- name: Computer Science/Decision Procedures and Certified Algorithms/Correctness proofs of algorithms
+
+build: |-
+ ## Building instructions
+
+ ``` shell
+ git clone https://github.com/palmskog/jmlcoq
+ cd jmlcoq
+ make   # or make -j <number-of-cores-on-your-machine>
+ ```
+
+documentation: |-
+  ## Documentation
+
+  More information about the formalization can be found on the
+  [project website](http://jmlcoq.info).
+---

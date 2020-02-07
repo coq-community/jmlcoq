@@ -1,0 +1,31 @@
+opam-version: "2.0"
+maintainer: "palmskog@gmail.com"
+version: "dev"
+
+homepage: "https://github.com/palmskog/jmlcoq"
+dev-repo: "git+https://github.com/palmskog/jmlcoq.git"
+bug-reports: "https://github.com/palmskog/jmlcoq/issues"
+license: "MIT"
+
+synopsis: "Coq definition of JML and a verified runtime assertion checker"
+description: """
+A formalization of the Java-based JML specification language,
+along with a verified runtime assertion checker for JML."""
+
+build: [make "-j%{jobs}%"]
+install: [make "install"]
+depends: [
+  "coq" {(>= "8.9" & < "8.12~") | (= "dev")}
+]
+
+tags: [
+  "category:Computer Science/Decision Procedures and Certified Algorithms/Correctness proofs of algorithms"
+  "keyword:Java Modeling Language"
+  "keyword:runtime verification"
+  "logpath:JML"
+]
+authors: [
+  "Hermann Lehner"
+  "David Pichardie"
+  "Andreas Kägi"
+]
