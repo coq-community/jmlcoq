@@ -1,6 +1,5 @@
 (coq.theory
- (name JMLCoq)
- (public_name coq-jmlcoq.JMLCoq)
- (flags :standard
-   -w -notation-overridden
-   -w -undeclared-scope))
+ (name JML)
+ (package coq-jmlcoq)
+ (synopsis "Coq definition of the JML specification language and a verified runtime assertion checker for JML")
+ (flags -w -notation-overridden -w -undeclared-scope))
