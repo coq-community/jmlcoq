@@ -28,7 +28,7 @@ along with a verified runtime assertion checker for JML.
 ## Building instructions
 
 ``` shell
-git clone https://github.com/palmskog/jmlcoq
+git clone https://github.com/palmskog/jmlcoq.git
 cd jmlcoq
 make   # or make -j <number-of-cores-on-your-machine>
 ```
