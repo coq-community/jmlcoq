@@ -1,8 +1,8 @@
 ---
 fullname: JMLCoq
 shortname: jmlcoq
-organization: palmskog
-community: false
+organization: coq-community
+community: true
 travis: true
 coqdoc: false
 dune: true
@@ -28,6 +28,10 @@ authors:
   initial: true
 - name: Andreas Kägi
   initial: true
+
+maintainers:
+- name: Karl Palmskog
+  nickname: palmskog
 
 opam-file-maintainer: palmskog@gmail.com
 
@@ -65,7 +69,7 @@ build: |-
  ## Building instructions
 
  ``` shell
- git clone https://github.com/palmskog/jmlcoq.git
+ git clone https://github.com/coq-community/jmlcoq.git
  cd jmlcoq
  make   # or make -j <number-of-cores-on-your-machine>
  ```

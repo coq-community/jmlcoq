@@ -2,9 +2,9 @@ opam-version: "2.0"
 maintainer: "palmskog@gmail.com"
 version: "dev"
 
-homepage: "https://github.com/palmskog/jmlcoq"
-dev-repo: "git+https://github.com/palmskog/jmlcoq.git"
-bug-reports: "https://github.com/palmskog/jmlcoq/issues"
+homepage: "https://github.com/coq-community/jmlcoq"
+dev-repo: "git+https://github.com/coq-community/jmlcoq.git"
+bug-reports: "https://github.com/coq-community/jmlcoq/issues"
 license: "MIT"
 
 synopsis: "Coq definition of the JML specification language and a verified runtime assertion checker for JML"
