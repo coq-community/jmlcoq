@@ -40,21 +40,22 @@ Require Import FSetProperties.
 Require Import FSetEqProperties.
 Require Import FSetFacts.
 Require Import Sumbool.
+Require Import Lia.
 
-  Import Dom.
-  Import Prog.
-  Import JmlNotations.
-  Import METHODSPEC.
-  Import TYPESPEC.
+Import Dom.
+Import Prog.
+Import JmlNotations.
+Import METHODSPEC.
+Import TYPESPEC.
 
-  Module LocSetProp := Properties LocSet.
-  Import LocSetProp.
-  Module LocSetPropEq := EqProperties LocSet.
-  Import LocSetPropEq.
-  Module LocSetFacts := Facts LocSet.
-  Import LocSetFacts.
+Module LocSetProp := Properties LocSet.
+Import LocSetProp.
+Module LocSetPropEq := EqProperties LocSet.
+Import LocSetPropEq.
+Module LocSetFacts := Facts LocSet.
+Import LocSetFacts.
 
-  Open Scope jml_scope.
+Open Scope jml_scope.
 
 (** * The JML Runtime Assertion Checker Rac3
 This module describes the runtime assertions checks for suported JML-Level 0 constructs *)
@@ -790,7 +791,7 @@ elim tree using
    case_eq (Nat.compare n (length dgs)); intros.
     assert (le (length dgs) n).
      rewrite nat_compare_Eq in H0.
-     omega.
+     lia.
      
      generalize H1; intro.
      apply nth_overflow with (d := DGNode f'' nil) in H1.
@@ -809,7 +810,7 @@ elim tree using
      
     assert (le (length dgs) n).
      rewrite <- nat_compare_gt in H0.
-     omega.
+     lia.
      
      generalize H1; intro.
      apply nth_overflow with (d := DGNode f'' nil) in H1.
@@ -953,7 +954,7 @@ unfold dgsEx.
       simpl.
       rewrite H2.
       simpl.
-      omega.
+      lia.
       
       destruct H0.
       intros.
@@ -3564,10 +3565,10 @@ case_eq (isPivot p loc); intros; rewrite H6 in H5;rewrite H6 in H4.
      auto with *.
      
      rewrite map_length.
-     omega.
+     lia.
      
      rewrite map_length.
-     omega.
+     lia.
      
     intros.
     apply nat_compare_lt in H14.
@@ -3601,10 +3602,10 @@ case_eq (isPivot p loc); intros; rewrite H6 in H5;rewrite H6 in H4.
      auto with *.
      
      rewrite map_length.
-     omega.
+     lia.
      
      rewrite map_length.
-     omega.
+     lia.
      
   rewrite H8.
   trivial.
