@@ -33,14 +33,15 @@ Require Import ZArith.
 Require Import Relation_Operators.
 Require Import ListHelpers.
 Require Import Classical. (* equality stuff *)
+Require Import Lia.
 
-  Import Dom.
-  Import Prog.
-  Import JmlNotations.
-  Import METHODSPEC.
-  Import TYPESPEC.
+Import Dom.
+Import Prog.
+Import JmlNotations.
+Import METHODSPEC.
+Import TYPESPEC.
 
-  Open Scope jml_scope.
+Open Scope jml_scope.
 
 (** * The JML Runtime Assertion Checker Rac1
 This module describes the runtime assertions checks for suported JML-Level 0 constructs *)
@@ -229,7 +230,7 @@ split; trivial; simpl.
      trivial.
      
      simpl in H11.
-     omega.
+     lia.
      
      left.
      destruct H13 as (m0, H13).
@@ -254,7 +255,7 @@ split; trivial; simpl.
    intros.
    destruct H10 with (S n).
     simpl.
-    omega.
+    lia.
     
     destruct H12 as (m0, H12).
     destruct H12.
@@ -274,9 +275,9 @@ split; trivial; simpl.
      simpl in H13.
      split.
       split.
-       omega.
+       lia.
        
-       omega.
+       lia.
        
       trivial.
       
@@ -481,7 +482,7 @@ split.
     inversion H13.
     
     simpl.
-    omega.
+    lia.
     
    destruct H11 as (m0, H11).
    destruct m0.
@@ -611,7 +612,7 @@ split; trivial.
    simpl in *.
    exists 0%nat.
    split.
-    omega.
+    lia.
     
     rewrite ObjSet2LocSet_def.
     unfold ObjSet.Equal in *.
@@ -808,7 +809,7 @@ split; trivial.
        exists 0%nat.
        split.
         split.
-         omega.
+         lia.
          
          simpl.
          intuition.
@@ -856,7 +857,7 @@ split; trivial.
        exists 0%nat.
        split.
         split.
-         omega.
+         lia.
          
          simpl.
          intuition.
