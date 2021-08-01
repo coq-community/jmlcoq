@@ -420,6 +420,7 @@ Declare Module State : STATE
 
 Module Notations.
 
+  Declare Scope rac3_scope.
   Delimit Scope rac3_scope with rac3.
 
   Open Scope rac3_scope.

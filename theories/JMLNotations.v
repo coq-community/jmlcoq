@@ -306,6 +306,7 @@ Definition duration_redundantly expr cond := durationC true (expr, cond).
 
 
 (** Notation for a list of NestedBody's *)
+Declare Scope jml_nb_scope.
 Notation "{| x ; .. ; y |}" := (cons x .. (cons y nil) ..) : jml_nb_scope. 
 
 Bind Scope jml_nb_scope with GENERIC_SPEC_CASE.t.

@@ -1,12 +1,16 @@
+<!---
+This file was generated from `meta.yml`, please do not edit manually.
+Follow the instructions on https://github.com/coq-community/templates to regenerate.
+--->
 # JMLCoq
 
-[![CI][action-shield]][action-link]
+[![Docker CI][docker-action-shield]][docker-action-link]
 [![Contributing][contributing-shield]][contributing-link]
 [![Code of Conduct][conduct-shield]][conduct-link]
 [![Zulip][zulip-shield]][zulip-link]
 
-[action-shield]: https://github.com/coq-community/jmlcoq/workflows/CI/badge.svg?branch=master
-[action-link]: https://github.com/coq-community/jmlcoq/actions?query=workflow%3ACI
+[docker-action-shield]: https://github.com/coq-community/jmlcoq/workflows/Docker%20CI/badge.svg?branch=master
+[docker-action-link]: https://github.com/coq-community/jmlcoq/actions?query=workflow:"Docker%20CI"
 
 [contributing-shield]: https://img.shields.io/badge/contributions-welcome-%23f7931e.svg
 [contributing-link]: https://github.com/coq-community/manifesto/blob/master/CONTRIBUTING.md
@@ -32,7 +36,7 @@ along with a verified runtime assertion checker for JML.
 - Coq-community maintainer(s):
   - Karl Palmskog ([**@palmskog**](https://github.com/palmskog))
 - License: [MIT License](LICENSE)
-- Compatible Coq versions: 8.9 or later
+- Compatible Coq versions: 8.10 or later
 - Additional dependencies: none
 - Coq namespace: `JML`
 - Related publication(s):

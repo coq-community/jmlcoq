@@ -25,6 +25,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 *)
 
 Require Import List.
+Require Import Arith.
 
 (**
   Usefull TheoryList extensions:
@@ -97,7 +98,7 @@ induction l; intros.
   subst.
   exists O.
   simpl.
-  auto with *.
+  auto with arith.
 
   elim IHl with d.
   intros.

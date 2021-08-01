@@ -842,10 +842,9 @@ Import EXPRESSION_NOTATIONS_P.
         | SpecifiedOS a,  SpecifiedOS b => SpecifiedOS (op a b)
         | NotSpecifiedOS, b => b
         | a, NotSpecifiedOS => a
-        | same, b => same
-        | a, same => same
+        | same, _ => same
+        | _, same => same
         end in
-
       match l0 with
       | nil => None
       | _   => Some (fold_left1 (liftOptionalSame2 Expression (BinaryCondBoolExpr ConditionalAnd)) l0 NotSpecifiedOS)

@@ -1,7 +1,6 @@
 -R theories JML
 
 -arg -w -arg -notation-overridden
--arg -w -arg -undeclared-scope
 
 theories/EqBoolAux.v
 theories/JMLDomain.v

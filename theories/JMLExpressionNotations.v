@@ -36,6 +36,7 @@ Require Import List.
 Module EXPRESSION_NOTATIONS (P:PROGRAM).
 Import P.
 
+Declare Scope jml_scope.
 Delimit Scope jml_scope with jml.
 
 (** Notation for convenient list construction syntax, e.g. [1; 2; 3] instead of 1::2::3::nil *)
@@ -186,7 +187,8 @@ Notation "x <== y" := (JMLBinaryBoolExpr LeftImplication x y) (at level 95) : jm
 
 (* Helper to get rid of some brakets *)
 
-Notation "f $ x" := (f x) (at level 99): precedence_scope. 
+Declare Scope precedence_scope.
+Notation "f $ x" := (f x) (at level 99): precedence_scope.
 
 Notation "'ℕ'" := (nat).
 Notation "'℞'" := (Prop).

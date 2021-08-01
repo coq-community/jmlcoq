@@ -192,6 +192,7 @@ Declare Module State : STATE
 
 Module Notations.
 
+  Declare Scope sem_scope.
   Delimit Scope sem_scope with sem.
 
   Open Scope sem_scope.
