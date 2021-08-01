@@ -103,6 +103,7 @@ Declare Module State : STATE
 
 Module Notations.
 
+  Declare Scope rac1_scope.
   Delimit Scope rac1_scope with rac1.
 
   Open Scope rac1_scope.
