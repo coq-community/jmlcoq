@@ -14,8 +14,8 @@ synopsis: >-
 
 description: |-
   A Coq formalization of the syntax and semantics of the
-  Java-targeted JML specification language,
-  along with a verified runtime assertion checker for JML.
+  Java-targeted JML specification language, along with a
+  verified runtime assertion checker for JML.
 
 publications:
 - pub_url: https://www.research-collection.ethz.ch/handle/20.500.11850/68882
@@ -44,7 +44,7 @@ license:
 
 supported_coq_versions:
   text: 8.10 or later
-  opam: '{(>= "8.10" & < "8.15~") | (= "dev")}'
+  opam: '{(>= "8.10" & < "8.16~") | (= "dev")}'
 
 tested_coq_nix_versions:
 - coq_version: 'master'
@@ -57,6 +57,10 @@ tested_coq_opam_versions:
 - version: '8.11'
 - version: '8.10'
 
+tested_coq_nix_versions:
+- coq_version: 'master'
+- coq_version: 'v8.15'
+
 namespace: JML
 
 keywords:
@@ -66,15 +70,6 @@ keywords:
 
 categories:
 - name: Computer Science/Decision Procedures and Certified Algorithms/Correctness proofs of algorithms
-
-build: |-
- ## Building instructions
-
- ``` shell
- git clone https://github.com/coq-community/jmlcoq.git
- cd jmlcoq
- make   # or make -j <number-of-cores-on-your-machine>
- ```
 
 documentation: |-
   ## Documentation
