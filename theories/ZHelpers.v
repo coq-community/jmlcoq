@@ -24,8 +24,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ----
 *)
 
-Require Import ZArith.
-Require Import Sumbool.
+From Coq Require Import ZArith.
+From Coq Require Import Sumbool.
 
 (**
   Equality decision functions for 

@@ -24,16 +24,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ----
 *)
 
-Require Export JMLSemantics.
-Require Import List.
-Require Import Stack.
-Require Import ListSet.
-Require Import Bool.
-Require Import ZArith.
-Require Import Relation_Operators.
-Require Import ListHelpers.
-Require Import Classical. (* equality stuff *)
-Require Import Lia.
+From JML Require Export JMLSemantics.
+From Coq Require Import List.
+From JML Require Import Stack.
+From Coq Require Import ListSet.
+From Coq Require Import Bool.
+From Coq Require Import ZArith.
+From Coq Require Import Relation_Operators.
+From JML Require Import ListHelpers.
+From Coq Require Import Lia.
 
 Import Dom.
 Import Prog.

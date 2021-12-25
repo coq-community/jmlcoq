@@ -37,10 +37,9 @@ RAC1: st_rac2 ----- Exec p ------> st'_rac2
 #</pre>#
 *)
 
-Require Export JMLRac2.
-Require Export JMLOpSem.
-Require Import List.
-Require Import Min.
+From JML Require Export JMLRac2.
+From JML Require Export JMLOpSem.
+From Coq Require Import List.
 
 Import Dom.
 Import Prog.
@@ -144,13 +143,13 @@ apply OpRac2.mutual_ind; intros; simpl in *.
    case isPivot.
     simpl.
     rewrite map_length.
-    apply le_min_r.
+    apply Nat.le_min_r.
     
-    apply le_min_r.
+    apply Nat.le_min_r.
     
   apply H in H5.
   rewrite H5.
-  apply le_min_l.
+  apply Nat.le_min_l.
   
  apply EquivAssignables_trans with st1; trivial.
   apply EquivAssignables_trans with st2; trivial.
@@ -176,7 +175,7 @@ apply EquivAssignables_ind_refl.
       
      apply H2 in H18.
      rewrite H18.
-     apply le_min_r.
+     apply Nat.le_min_r.
       
      rewrite <- H21.
      apply MethodReturnAction_Equiv with st2; auto.
@@ -194,11 +193,11 @@ apply EquivAssignables_ind_refl.
       
    apply H0 in H9.
    rewrite H9.
-   apply le_min_l.
+   apply Nat.le_min_l.
    
   apply H in H4.
   rewrite H4.
-  apply le_min_l.
+  apply Nat.le_min_l.
 
  apply EquivAssignables_trans with (st' := st1); trivial.
   apply NewObjectAction_Equiv with o; auto.
@@ -211,7 +210,7 @@ apply EquivAssignables_ind_refl.
   
   rewrite H6.
   simpl.
-  apply le_min_r.
+  apply Nat.le_min_r.
   
  rewrite H3.
  apply EquivAssignables_refl.
@@ -219,7 +218,7 @@ apply EquivAssignables_ind_refl.
  apply EquivAssignables_trans with st1; trivial.
  apply H0 in H6.
  rewrite H6.
- apply le_min_r.
+ apply Nat.le_min_r.
  
  trivial.
  
@@ -234,11 +233,11 @@ apply EquivAssignables_ind_refl.
    
    rewrite H6.
    simpl.
-   apply le_min_l.
+   apply Nat.le_min_l.
    
   apply H1 in H4.
   rewrite H4.
-  apply le_min_l.
+  apply Nat.le_min_l.
   
  trivial.
 Qed.
@@ -392,7 +391,7 @@ apply EquivAssignables_ind_refl.
       trivial.
 apply H26 in H14.
 rewrite H14.
-apply le_min_r.
+apply Nat.le_min_r.
 
 apply H26 in H14.
 rewrite <- H14.
@@ -657,7 +656,7 @@ apply EquivAssignables_ind_refl.
       trivial.
 apply H26 in H22.
 rewrite H22.
-apply le_min_r.
+apply Nat.le_min_r.
 
 apply H26 in H22.
 rewrite <- H22.

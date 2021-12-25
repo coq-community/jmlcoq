@@ -29,18 +29,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   for statements (JML/Java), blocks and  and blocks.
  *)
 
-Require Import List.
-Require Import ListHelpers.
+From Coq Require Import List.
+From JML Require Import ListHelpers.
+From JML Require Import JMLExpressionNotations.
+From JML Require Import JMLProgramPlusImpl.
 
-Require Import JMLExpressionNotations.
-
-Require Import JMLProgramPlusImpl.
 Import P. (* PROGRAM module *)
 
 Module EXPRESSION_NOTATIONS_P := EXPRESSION_NOTATIONS P.Program.
 Export EXPRESSION_NOTATIONS_P.
 
-Require Export JMLFull2BasicImpl.
+From JML Require Export JMLFull2BasicImpl.
 
 (** Full syntax quantifiers with multiple variables *)
 Notation "\forall vs ; r ; e"  := (rewriteFullQuantifier (FullQuantification Forall vs r e)) (at level 0, e at level 200) : jml_scope.

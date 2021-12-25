@@ -24,24 +24,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ----
 *)
 
-Require Export JMLRac.
-Require Import Min.
-Require Import List.
-Require Import Stack.
-Require Import ListSet.
-Require Import Bool.
-Require Import ZArith.
-Require Import Relation_Operators.
-Require Import ListHelpers.
-Require Import Classical.
+From JML Require Export JMLRac.
+From Coq Require Import List.
+From JML Require Import Stack.
+From Coq Require Import ListSet.
+From Coq Require Import Bool.
+From Coq Require Import ZArith.
+From Coq Require Import Relation_Operators.
+From JML Require Import ListHelpers.
+From Coq Require Import Classical.
 
-  Import Dom.
-  Import Prog.
-  Import JmlNotations.
-  Import METHODSPEC.
-  Import TYPESPEC.
+Import Dom.
+Import Prog.
+Import JmlNotations.
+Import METHODSPEC.
+Import TYPESPEC.
 
-  Open Scope jml_scope.
+Open Scope jml_scope.
 
 (** * The JML Runtime Assertion Checker Rac2
 This module describes the runtime assertions checks for suported JML-Level 0 constructs *)
@@ -1184,7 +1183,7 @@ Lemma min_L: forall x y, min x y = x <-> x <= y.
 Proof.
 split;intros.
 destruct H.
-apply le_min_r.
+apply Nat.le_min_r.
 apply min_l;trivial.
 Qed.
 
@@ -1192,7 +1191,7 @@ Lemma min_R : forall x y , min x y = y <-> y <= x.
 Proof.
 split;intros.
 destruct H.
-apply le_min_l.
+apply Nat.le_min_l.
 apply min_r;trivial.
 Qed.
 
@@ -1214,7 +1213,7 @@ unfold EquivAssignables in *;
   *  by trivial;
  replace (FrameAdds.assignables (State.Frame.adds (State.fr st''))) with x''
   in *  by trivial.
-elim min_dec with (length x) (length x''); intro.
+elim Nat.min_dec with (length x) (length x''); intro.
  rewrite a in H1.
  apply min_L in a.
  generalize H1.
@@ -1896,15 +1895,3 @@ Qed.
 End Assignables.
 
 End Rac2.
-
-
-
-
-
-
-
-
-
-
-
-

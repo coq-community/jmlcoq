@@ -13,13 +13,13 @@ license: "MIT"
 synopsis: "Coq definition of the JML specification language and a verified runtime assertion checker for JML"
 description: """
 A Coq formalization of the syntax and semantics of the
-Java-targeted JML specification language,
-along with a verified runtime assertion checker for JML."""
+Java-targeted JML specification language, along with a
+verified runtime assertion checker for JML."""
 
 build: ["dune" "build" "-p" name "-j" jobs]
 depends: [
   "dune" {>= "2.5"}
-  "coq" {(>= "8.10" & < "8.15~") | (= "dev")}
+  "coq" {(>= "8.10" & < "8.16~") | (= "dev")}
 ]
 
 tags: [

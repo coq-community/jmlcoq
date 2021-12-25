@@ -29,12 +29,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 Based on The "Java (TM) Virtual Machine Specification, Second Edition, 
 Tim Lindholm, Frank Yellin" *)
 
-Require Export JMLExpressionNotations.
-Require Export JMLNumeric.
-Require Import List.
-Require Import Relation_Operators.
-Require Import DecidableType.
-Require Import FSetInterface.
+From JML Require Export JMLExpressionNotations.
+From JML Require Export JMLNumeric.
+From Coq Require Import List.
+From Coq Require Import Relation_Operators.
+From Coq Require Import DecidableType.
+From Coq Require Import FSetInterface.
 
 Open Scope Z_scope.
 

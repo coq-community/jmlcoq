@@ -24,7 +24,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ----
 *)
 
-Require Export ZArith.
+From Coq Require Export ZArith.
 (** Common interface for numerics domains *)
 Open Scope Z_scope.
 

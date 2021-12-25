@@ -24,24 +24,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ----
 *)
 
-Require Import JMLProgramPlus.
-Require Import ZArith.
-Require Import ZHelpers.
-Require Import LogicHelpers.
-Require Import Bool.
-
-Require Import Sumbool.
-
-Require Import Ndec.
-Require Import PosAux.
-Require Import EqBoolAux.
-
-Require Import Relation_Operators.
-
-Require Import List.
-Require Import ListFunctions.
-Require Import ListHelpers.
-Require Import OptionHelpers.
+From JML Require Import JMLProgramPlus.
+From Coq Require Import ZArith.
+From JML Require Import ZHelpers.
+From JML Require Import LogicHelpers.
+From Coq Require Import Bool.
+From Coq Require Import Sumbool.
+From Coq Require Import Ndec.
+From JML Require Import PosAux.
+From JML Require Import EqBoolAux.
+From Coq Require Import Relation_Operators.
+From Coq Require Import List.
+From JML Require Import ListFunctions.
+From JML Require Import ListHelpers.
+From JML Require Import OptionHelpers.
 (** 
   Implementation of both the PROGRAM and PROGRAM_PLUS (see end of file)
   signatures based on the list data type.

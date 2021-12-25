@@ -24,7 +24,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ----
 *)
 
-Require Import List.
+From Coq Require Import List.
 
 (**
   Helper functions to work with option types:

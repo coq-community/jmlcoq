@@ -28,8 +28,8 @@ Follow the instructions on https://github.com/coq-community/templates to regener
 
 
 A Coq formalization of the syntax and semantics of the
-Java-targeted JML specification language,
-along with a verified runtime assertion checker for JML.
+Java-targeted JML specification language, along with a
+verified runtime assertion checker for JML.
 
 ## Meta
 
@@ -46,13 +46,25 @@ along with a verified runtime assertion checker for JML.
 - Related publication(s):
   - [A Formalization of JML in the Coq Proof System](https://www.research-collection.ethz.ch/handle/20.500.11850/68882) doi:[10.3929/ethz-a-006903145](https://doi.org/10.3929/ethz-a-006903145)
 
-## Building instructions
+## Building and installation instructions
+
+The easiest way to install the latest released version of JMLCoq
+is via [OPAM](https://opam.ocaml.org/doc/Install.html):
+
+```shell
+opam repo add coq-released https://coq.inria.fr/opam/released
+opam install coq-jmlcoq
+```
+
+To instead build and install manually, do:
 
 ``` shell
 git clone https://github.com/coq-community/jmlcoq.git
 cd jmlcoq
-make   # or make -j <number-of-cores-on-your-machine>
+make   # or make -j <number-of-cores-on-your-machine> 
+make install
 ```
+
 
 ## Documentation
 

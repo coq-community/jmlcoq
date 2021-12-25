@@ -37,8 +37,8 @@ RAC1: st_rac3 ----- Exec p ------> st'_rac3
 #</pre>#
 *)
 
-Require Export JMLRac3.
-Require Export JMLOpSem.
+From JML Require Export JMLRac3.
+From JML Require Export JMLOpSem.
 
 Import Dom.
 Import Prog.

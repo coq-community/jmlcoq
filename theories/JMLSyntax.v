@@ -28,12 +28,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   This file can be "Require Import"ed by clients of the full syntax formalisation.
  *)
 
-Require Export JMLProgramPlusImpl.
-Require Export JMLFull2BasicImpl.
-Require Export JMLNotations.
-
-Require Export ZArith.
-Require Export List.
+From JML Require Export JMLProgramPlusImpl.
+From JML Require Export JMLFull2BasicImpl.
+From JML Require Export JMLNotations.
+From Coq Require Export ZArith.
+From Coq Require Export List.
 
 Open Scope Z_scope.
 Open Scope jml_scope.

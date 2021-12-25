@@ -24,8 +24,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ----
 *)
 
-Require Import List.
-Require Import Decidable.
+From Coq Require Import List.
+From Coq Require Import Decidable.
 
 (**
   Utils to store tagged data in a list.

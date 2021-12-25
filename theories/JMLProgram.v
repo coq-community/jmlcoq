@@ -29,9 +29,9 @@ Based on The "Java (TM) Virtual Machine Specification, Second Edition,
 Tim Lindholm, Frank Yellin"
 *)
 
-Require Import List.
-Require Import ZArith.
-Require Import Relation_Operators.
+From Coq Require Import List.
+From Coq Require Import ZArith.
+From Coq Require Import Relation_Operators.
 
 Open Scope type_scope.
 

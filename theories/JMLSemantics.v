@@ -24,15 +24,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ----
 *)
 
-Require Export JMLDomain.
-
-Require Import List.
-Require Import ListSet.
-Require Import FSetInterface.
-Require Import Bool.
-Require Import ZArith.
-Require Import Relation_Operators.
-Require Import ListHelpers.
+From JML Require Export JMLDomain.
+From Coq Require Import List.
+From Coq Require Import ListSet.
+From Coq Require Import FSetInterface.
+From Coq Require Import Bool.
+From Coq Require Import ZArith.
+From Coq Require Import Relation_Operators.
+From JML Require Import ListHelpers.
 
 Declare Module Dom  : SEMANTIC_DOMAIN.
 Import Dom.

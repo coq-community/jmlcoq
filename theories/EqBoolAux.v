@@ -24,8 +24,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ----
 *)
 
-Require Export Sumbool.
-Require Import List.
+From Coq Require Export Sumbool.
+From Coq Require Import List.
 
 Definition bool_eq (b1 b2:bool) := 
   if b1 then b2 

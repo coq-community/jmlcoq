@@ -29,9 +29,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
    expressions (JML/Java) and some JML keywords.
  *)
 
-Require Export JMLProgram.
-Require Import ZArith.
-Require Import List.
+From JML Require Export JMLProgram.
+From Coq Require Import ZArith.
+From Coq Require Import List.
 
 Module EXPRESSION_NOTATIONS (P:PROGRAM).
 Import P.
