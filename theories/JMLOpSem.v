@@ -24,13 +24,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ----
 *)
 
-Require Export JMLSemantics.
-Require Import List.
-Require Import Relation_Operators.
+From JML Require Export JMLSemantics.
+From Coq Require Import List.
+From Coq Require Import Relation_Operators.
 
-  Import Dom.
-  Import Prog.
-  Import METHODSPEC.
+Import Dom.
+Import Prog.
+Import METHODSPEC.
 
 (** * The Java Operational Semantics
 As parameter, we pass the module that defines the jml annotations to use (semantics or rac) *) 

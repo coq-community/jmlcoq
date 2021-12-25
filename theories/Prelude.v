@@ -24,8 +24,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ----
 *)
 
-Require Import JMLProgramPlusImpl.
-Require Import ZArith.
+From JML Require Import JMLProgramPlusImpl.
+From Coq Require Import ZArith.
 
 Module java.
 Module lang.

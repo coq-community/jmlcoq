@@ -28,9 +28,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   Implementation of the basic2minimal rewritings specified in the BASIC2MINIMAL module.
  *)
 
-Require Import JMLBasic2Minimal.
-Require Import JMLSyntax.
-Require Import List.
+From JML Require Import JMLBasic2Minimal.
+From JML Require Import JMLSyntax.
+From Coq Require Import List.
 
 Module BASIC2MINIMAL_P := BASIC2MINIMAL P.Program.
 Import BASIC2MINIMAL_P.
@@ -78,5 +78,3 @@ Module MINIMAL_REWRITINGS <: REWRITINGS_TYPE.
     PROG.Build_t classes' interfaces'.
 
 End MINIMAL_REWRITINGS.
-
-    

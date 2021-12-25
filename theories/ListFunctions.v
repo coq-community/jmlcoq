@@ -24,8 +24,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ----
 *)
 
-Require Import List.
-Require Import Coq.Arith.Max.
+From Coq Require Import List Arith.
 
 (**
   Useful functions on lists, not part of the Coq standard library.

@@ -24,10 +24,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ----
 *)
 
-Require Import JMLProgramPlus.
-
-Require Import List.
-Require Import TaggedList.
+From JML Require Import JMLProgramPlus.
+From Coq Require Import List.
+From JML Require Import TaggedList.
 
 (**
   FULL2BASIC provides functions that perform, explicitly or implicitly,

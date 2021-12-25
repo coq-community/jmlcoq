@@ -24,10 +24,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ----
 *)
 
-Require Import List.
-Require Import Arith.
-Require Import Min.
-Require Import Classical.
+From Coq Require Import List.
+From Coq Require Import Arith.
 
 Section definitions.
 
@@ -203,9 +201,9 @@ induction s.
   apply nat_compare_lt in H0.
   unfold length in H0.
   auto with *.
-  
+
   apply nat_compare_gt in H0.
-  apply le_not_lt in H.
+  apply Nat.le_ngt in H.
   elim H.
   trivial.
 Qed.
@@ -482,7 +480,7 @@ intuition.
 apply nat_compare_lt in H0.
 apply nat_compare_Eq in H1.
 subst.
-apply le_not_lt in H.
+apply Nat.le_ngt in H.
 elim H;trivial.
 trivial.
 intuition.
@@ -490,8 +488,8 @@ apply nat_compare_lt in H0.
 apply nat_compare_gt in H1.
 assert (m < n).
 apply lt_gt in H1.
-apply lt_trans with (length (a::s));trivial.
-apply le_not_lt in H.
+apply Nat.lt_trans with (length (a::s));trivial.
+apply Nat.le_ngt in H.
 elim H;trivial.
 trivial.
 Qed.

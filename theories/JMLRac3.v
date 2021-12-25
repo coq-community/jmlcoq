@@ -24,23 +24,22 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ----
 *)
 
-Require Export JMLRac2.
-Require Import Min.
-Require Import List.
-Require Import Stack.
-Require Import ListSet.
-Require Import Bool.
-Require Import ZArith.
-Require Import Relation_Operators.
-Require Import ListHelpers.
-Require Import Classical.
-Require Import DecidableType.
-Require Import FSetInterface.
-Require Import FSetProperties.
-Require Import FSetEqProperties.
-Require Import FSetFacts.
-Require Import Sumbool.
-Require Import Lia.
+From JML Require Export JMLRac2.
+From Coq Require Import List.
+From JML Require Import Stack.
+From Coq Require Import ListSet.
+From Coq Require Import Bool.
+From Coq Require Import ZArith.
+From Coq Require Import Relation_Operators.
+From JML Require Import ListHelpers.
+From Coq Require Import Classical.
+From Coq Require Import DecidableType.
+From Coq Require Import FSetInterface.
+From Coq Require Import FSetProperties.
+From Coq Require Import FSetEqProperties.
+From Coq Require Import FSetFacts.
+From Coq Require Import Sumbool.
+From Coq Require Import Lia.
 
 Import Dom.
 Import Prog.

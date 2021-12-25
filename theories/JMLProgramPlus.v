@@ -24,8 +24,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ----
 *)
 
-Require Export JMLProgram.
-Require Import List.
+From JML Require Export JMLProgram.
+From Coq Require Import List.
 
 (**
   PROGRAM_PLUS extends the PROGRAM signature (JMLProgram)

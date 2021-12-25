@@ -24,22 +24,22 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ----
 *)
 
-Require Import Prelude.
-Require Import ZArith.
-Require Import Bool.
-Require Import List.
-Require Import TaggedList.
-Require Import ListHelpers.
-Require Import ListFunctions.
-Require Import OptionHelpers.
-
-Require Import JMLProgramPlusImpl.
-Require Import JMLFull2Basic.
+From JML Require Import Prelude.
+From Coq Require Import ZArith.
+From Coq Require Import Bool.
+From Coq Require Import List.
+From JML Require Import TaggedList.
+From JML Require Import ListHelpers.
+From JML Require Import ListFunctions.
+From JML Require Import OptionHelpers.
+From JML Require Import JMLProgramPlusImpl.
+From JML Require Import JMLFull2Basic.
 
 Module FULL2BASIC_P := FULL2BASIC P.
 Import FULL2BASIC_P.
 
-Require Import JMLExpressionNotations.
+From JML Require Import JMLExpressionNotations.
+
 Module EXPRESSION_NOTATIONS_P := EXPRESSION_NOTATIONS P.Program.
 Import EXPRESSION_NOTATIONS_P.
 
@@ -421,9 +421,6 @@ Import EXPRESSION_NOTATIONS_P.
       | nil   => true
       | s::ss => if FULL_SPEC_CASE.isRedundant s then (isEmptySpecification ss) else false
       end.
-
-    (* Require Import ListSet. *)
-    (* Print Module ListSet. *)
 
     (**
       (assignableList case) is the list of concatenated assignable expressions  

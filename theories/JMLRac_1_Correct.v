@@ -52,9 +52,9 @@ forall st_rac, st_sem, st_rac', p,
 #</pre>#
 *)
 
-Require Export JMLRac.
-Require Export JMLOpSem.
-Require Import List.
+From JML Require Export JMLRac.
+From JML Require Export JMLOpSem.
+From Coq Require Import List.
 
 Import Dom.
 Import Prog.
