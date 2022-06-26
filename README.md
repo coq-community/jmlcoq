@@ -44,6 +44,7 @@ verified runtime assertion checker for JML.
 - Additional dependencies: none
 - Coq namespace: `JML`
 - Related publication(s):
+  - [A formal definition of JML in Coq and its application to runtime assertion checking](https://www.research-collection.ethz.ch/handle/20.500.11850/44276) doi:[10.3929/ethz-a-006680049](https://doi.org/10.3929/ethz-a-006680049)
   - [A Formalization of JML in the Coq Proof System](https://www.research-collection.ethz.ch/handle/20.500.11850/68882) doi:[10.3929/ethz-a-006903145](https://doi.org/10.3929/ethz-a-006903145)
 
 ## Building and installation instructions
