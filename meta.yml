@@ -6,7 +6,7 @@ community: true
 action: true
 nix: true
 coqdoc: false
-dune: true
+dune: false
 
 synopsis: >-
   Coq definition of the JML specification language
@@ -18,6 +18,9 @@ description: |-
   verified runtime assertion checker for JML.
 
 publications:
+- pub_url: https://www.research-collection.ethz.ch/handle/20.500.11850/44276
+  pub_title: A formal definition of JML in Coq and its application to runtime assertion checking
+  pub_doi: 10.3929/ethz-a-006680049
 - pub_url: https://www.research-collection.ethz.ch/handle/20.500.11850/68882
   pub_title: A Formalization of JML in the Coq Proof System
   pub_doi: 10.3929/ethz-a-006903145
@@ -44,13 +47,14 @@ license:
 
 supported_coq_versions:
   text: 8.10 or later
-  opam: '{(>= "8.10" & < "8.16~") | (= "dev")}'
+  opam: '{(>= "8.10" & < "8.17~") | (= "dev")}'
 
 tested_coq_nix_versions:
 - coq_version: 'master'
 
 tested_coq_opam_versions:
 - version: dev
+- version: '8.16'
 - version: '8.15'
 - version: '8.14'
 - version: '8.13'
