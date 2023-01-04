@@ -1289,7 +1289,7 @@ Module Make <: PROGRAM.
       discriminate Htl.
       simpl in Htl.
       rewrite Htl.
-      intuition.
+      intuition auto with datatypes.
       intro Hdis; discriminate Hdis.
     Qed.
 
