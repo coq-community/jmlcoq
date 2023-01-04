@@ -236,7 +236,7 @@ split; trivial; simpl.
      destruct H13 as (m0, H13).
      exists (S m0).
      simpl.
-     intuition.
+     intuition auto with arith.
      
      right.
      simpl.
@@ -812,7 +812,7 @@ split; trivial.
          lia.
          
          simpl.
-         intuition.
+         intuition auto with arith.
          
         simpl.
         rewrite ObjSet2LocSet_def.
@@ -860,7 +860,7 @@ split; trivial.
          lia.
          
          simpl.
-         intuition.
+         intuition auto with arith.
          
         simpl.
         rewrite ObjSet2LocSet_def.

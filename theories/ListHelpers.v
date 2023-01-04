@@ -104,7 +104,7 @@ induction l; intros.
   intros.
   exists (S x).
   simpl.
-  intuition.
+  intuition auto with arith.
 
   trivial.
 Qed.
@@ -216,7 +216,7 @@ Section Suffix.
   Lemma Suffix_nil_l : forall l:list A, Suffix nil l.
   Proof.
     intro l.
-    exists l; intuition.
+    exists l; intuition auto with datatypes.
   Qed.
   
   (** l is a suffix of itself. *)
@@ -248,8 +248,7 @@ Section Suffix.
     elim Hsuff.
     intros p Heq.
     rewrite <- Heq.
-    intuition.
-
+    intuition auto with datatypes.
   Qed.
 
   (**

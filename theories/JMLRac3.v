@@ -545,7 +545,7 @@ induction l.
   apply IHl in H.
   destruct H.
   exists x.
-  intuition.
+  intuition auto with datatypes.
 
  destruct H as (elem, H).
  destruct H.
