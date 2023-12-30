@@ -10,11 +10,11 @@ Follow the instructions on https://github.com/coq-community/templates to regener
 [![Code of Conduct][conduct-shield]][conduct-link]
 [![Zulip][zulip-shield]][zulip-link]
 
-[docker-action-shield]: https://github.com/coq-community/jmlcoq/workflows/Docker%20CI/badge.svg?branch=master
-[docker-action-link]: https://github.com/coq-community/jmlcoq/actions?query=workflow:"Docker%20CI"
+[docker-action-shield]: https://github.com/coq-community/jmlcoq/actions/workflows/docker-action.yml/badge.svg?branch=master
+[docker-action-link]: https://github.com/coq-community/jmlcoq/actions/workflows/docker-action.yml
 
-[nix-action-shield]: https://github.com/coq-community/jmlcoq/workflows/Nix%20CI/badge.svg?branch=master
-[nix-action-link]: https://github.com/coq-community/jmlcoq/actions?query=workflow:"Nix%20CI"
+[nix-action-shield]: https://github.com/coq-community/jmlcoq/actions/workflows/nix-action.yml/badge.svg?branch=master
+[nix-action-link]: https://github.com/coq-community/jmlcoq/actions/workflows/nix-action.yml
 
 [contributing-shield]: https://img.shields.io/badge/contributions-welcome-%23f7931e.svg
 [contributing-link]: https://github.com/coq-community/manifesto/blob/master/CONTRIBUTING.md
